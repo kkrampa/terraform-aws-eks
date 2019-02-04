@@ -37,6 +37,7 @@ locals {
     suspended_processes           = ""                              # A comma delimited string of processes to to suspend. i.e. AZRebalance,HealthCheck,ReplaceUnhealthy
     target_group_arns             = ""                              # A comma delimited list of ALB target group ARNs to be associated to the ASG
     enabled_metrics               = ""                              # A comma delimited list of metrics to be collected i.e. GroupMinSize,GroupMaxSize,GroupDesiredCapacity
+    wait_for_capacity_timeout     = "10m"                           # Time that terraform will wait for healthy instances. Setting wait_for_capacity_timeout to "0" disables ASG Capacity waiting.
   }
 
   workers_group_defaults = "${merge(local.workers_group_defaults_defaults, var.workers_group_defaults)}"
@@ -77,6 +78,7 @@ locals {
     suspended_processes                      = ""                                            # A comma delimited string of processes to to suspend. i.e. AZRebalance,HealthCheck,ReplaceUnhealthy
     target_group_arns                        = ""                                            # A comma delimited list of ALB target group ARNs to be associated to the ASG
     enabled_metrics                          = ""                                            # A comma delimited list of metrics to be collected i.e. GroupMinSize,GroupMaxSize,GroupDesiredCapacity
+    wait_for_capacity_timeout                = "10m"                                         # Time that terraform will wait for healthy instances. Setting wait_for_capacity_timeout to "0" disables ASG Capacity waiting.
   }
 
   workers_group_launch_template_defaults = "${merge(local.workers_group_launch_template_defaults_defaults, var.workers_group_launch_template_defaults)}"
